@@ -1,0 +1,21 @@
+#!/bin/bash
+python train.py --data dataSet/mydata.yaml `
+	     --hyp dataSet/hyp.mydata1.yaml `
+	     --cfg dataSet/mydata5s.yaml `
+	     --batch-size 3 `
+	     --img-size 1280 `
+	     --epochs 36 `
+	     --workers 0 `
+	     --weights ./runs/train/exp/weights/last.pt
+	     
+python train.py --data dataSet/mydata.yaml `
+	     --hyp dataSet/hyp.mydata1.yaml `
+	     --cfg dataSet/mydata5s.yaml `
+	     --batch-size 2 `
+	     --img-size 640 `
+	     --epochs 36 `
+	     --workers 0 `
+	     --weights ./weights/yolov5s.pt
+
+	     
+python detect.py --source ./imagetest/ --weight ./runs/train/exp11/weights/best.pt --img-size 1280
